@@ -1,20 +1,109 @@
-footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+#all-trips {
+  background-color: yellow;
+  width: 150px;
+  margin: 20px 10px; /* Combined margin properties */
+  padding: 5px;
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+.footer-wrapper {
+  color: white;
+  padding: 10px;
+  font-size: 13px;
+  background-color: black;
 }
 
-footer .footer p {
-  margin: 0;
+.footer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 20px; /* Space between items */
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+.footer > div {
+  grid-column: span 1; /* Each child occupies one column */
+}
+
+/* Specific placements */
+.footer > div:nth-child(1) {
+  grid-column: 1; /* First child */
+  display: flex;
+}
+
+.footer > div:nth-child(2) {
+  font-size: 15px;
+  cursor: pointer;
+  grid-column: 2; /* Second child */
+  display: flex; /* Flex container */
+  align-items: center; /* Center content vertically */
+}
+
+.footer > div:nth-child(2) > div {
+  display: flex; /* Flex for buttons */
+  margin-left: 100px;
+  gap: 10px; /* Space between buttons */
+}
+
+.footer > div:nth-child(2) > div:nth-child(2) {
+  background-color: #fff; /* Changed to white for visibility */
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px; /* Reduced margin for better spacing */
+  font-size: 23px;
+  color: black; /* Button text color */
+  padding: 4px;
+}
+.footer-wrapper ul {
+  list-style-type: none; /* Remove the bullets */
+  padding: 0;           /* Remove default padding */
+  display: flex;        /* Use flexbox layout */
+  gap: 20px;    
+  margin-top: 20px;   
+  margin-left: 100px;   
+}
+
+.footer-wrapper li {
+  display: inline;      /* Ensure items are displayed inline */
+}
+
+.footer > div:nth-child(3),
+.footer > div:nth-child(4),
+.footer > div:nth-child(5) {
+  grid-column: 1 / 3; /* Span both columns */
+}
+
+.footer > div:first-child p {
+  font-size: 45px; /* WKND font size */
+  margin: 0; /* Remove margin */
+}
+
+/* Set default link color to white */
+.footer a {
+  color: white; /* Default link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.footer a:hover {
+  color: #ccc; /* Change color on hover for better visibility */
+}
+
+/* Specific styles for social media links */
+.footer a.social-media {
+  color: black; /* Set social media link color to black */
+}
+
+.footer a.social-media:hover {
+  color: #444; /* Change color on hover for better visibility */
+}
+
+.fa {
+  color: black; /* Icon color */
+}
+
+
+/* Responsive styles */
+@media (min-width: 1000px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
   }
 }

@@ -1,20 +1,45 @@
-import { getMetadata } from '../../scripts/aem.js';
-import { loadFragment } from '../fragment/fragment.js';
 
-/**
- * loads and decorates the footer
- * @param {Element} block The footer block element
- */
-export default async function decorate(block) {
-  // load footer as fragment
-  const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
-  const fragment = await loadFragment(footerPath);
+// Select the footer element
+const footer = document.querySelector('.footer');
 
-  // decorate footer DOM
-  block.textContent = '';
-  const footer = document.createElement('div');
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
-
-  block.append(footer);
+// Set the display style to grid
+if (footer) {
+  footer.style.display = 'grid';
+  footer.style.gridTemplateColumns = 'repeat(2, 1fr)';
+  footer.style.gap = '20px'; // Adjust the gap as needed
 }
+
+
+// Select all button containers
+const buttonContainers = footer.querySelectorAll('.button-container a');
+
+// Replace each link's inner HTML with the corresponding Font Awesome icon
+buttonContainers.forEach(link => {
+  switch (link.title) {
+    case 'Facebook':
+      link.innerHTML = '<i class="fab fa-facebook"></i>'; // Facebook icon
+      break;
+    case 'Twitter':
+      link.innerHTML = '<i class="fab fa-twitter"></i>'; // Twitter icon
+      break;
+    case 'Instagram':
+      link.innerHTML = '<i class="fab fa-instagram"></i>'; // Instagram icon
+      break;
+  }
+});
+
+// Select the footer elemen
+
+if (footer) {
+  // Select all link elements in the footer
+  const links = footer.querySelectorAll('a');
+
+  // Loop through the links and assign classes
+  links.forEach(link => {
+    // Check the title of the link to assign appropriate class
+    if (link.title === 'Facebook' || link.title === 'Twitter' || link.title === 'Instagram') {
+      link.classList.add('social-media'); // Add social media class
+    }
+  });
+}
+
